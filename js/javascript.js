@@ -1,18 +1,18 @@
-let Name = prompt("Adınızı Giriniz");
-let myName= document.querySelector("#myName")
+let myName = prompt("Lütfen adınızı giriniz:");
+document.getElementById('myName').innerHTML = myName;
 
-myName.innerHTML = `${Name.toUpperCase()}!`
+var saatim = document.getElementById('saat');
+var gunum = document.getElementById('gunn');
 
-
-function tarihSaat() {
-    var date = new Date().toLocaleString();
-    document.querySelector("#myClock").innerHTML = date;
-}
-
-
-const gun = new Date();
-const days = ["PAZAR", "PAZARTESİ", "SALI", "ÇARŞAMBA", "PERŞEMBE", "CUMA", "CUMARTESİ"];
-document.querySelector("#myDay").innerHTML = days[gun.getDay()];
-
-
-setInterval(tarihSaat, 1000); 
+setInterval(function (){
+    var tarih = new Date();
+    var yil = tarih.getFullYear();
+    var ay = tarih.getMonth() + 1;
+    //var gun = tarih.getDate();
+    var saat = tarih.getHours();
+    var dk = tarih.getMinutes();
+    var sn = tarih.getSeconds();
+    var gun = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"][new Date().getDate()];
+    saatim.textContent = ("0" + saat).substr(-2)  + "." + ("0" + dk).substr(-2)  + "." + ("0" + sn).substr(-2) ;
+    gunum.textContent = gun;
+},1000);
